@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GREEN API Test Interface - Modern WhatsApp API Integration">
+    <title>GREEN API © 2025 - Test Interface</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://api.green-api.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🟢</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#25D366">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="header-title">
+                    <span class="logo">🟢</span>
+                    GREEN API
+                    <span class="year">© 2025</span>
+                </h1>
+                <p class="header-subtitle">WhatsApp API Integration Test Interface</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-grid">
+                <!-- Left Panel: Controls -->
+                <section class="controls-panel">
+                    <div class="card">
+                        <h2 class="section-title">Connection Settings</h2>
+                        
+                        <!-- Instance Configuration -->
+                        <div class="form-group">
+                            <label for="idInstance" class="form-label">
+                                <span class="label-text">idInstance</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="idInstance" 
+                                class="form-input" 
+                                placeholder="Enter your instance ID"
+                                required
+                                autocomplete="off"
+                            >
+                            <div class="input-error" id="idInstance-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="apiTokenInstance" class="form-label">
+                                <span class="label-text">ApiTokenInstance</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="apiTokenInstance" 
+                                class="form-input" 
+                                placeholder="Enter your API token"
+                                required
+                                autocomplete="off"
+                            >
+                            <div class="input-error" id="apiTokenInstance-error"></div>
+                        </div>
+
+                        <!-- Instance Methods -->
+                        <div class="methods-section">
+                            <h3 class="subsection-title">Instance Methods</h3>
+                            <div class="button-group">
+                                <button 
+                                    type="button" 
+                                    id="getSettings" 
+                                    class="btn btn-primary"
+                                    data-method="getSettings"
+                                >
+                                    <span class="btn-icon">⚙️</span>
+                                    getSettings
+                                </button>
+                                <button 
+                                    type="button" 
+                                    id="getStateInstance" 
+                                    class="btn btn-primary"
+                                    data-method="getStateInstance"
+                                >
+                                    <span class="btn-icon">📊</span>
+                                    getStateInstance
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Message Methods -->
+                        <div class="methods-section">
+                            <h3 class="subsection-title">Message Methods</h3>
+                            
+                            <!-- Send Message -->
+                            <div class="form-group">
+                                <label for="phoneNumber" class="form-label">
+                                    <span class="label-text">Phone Number</span>
+                                    <span class="label-required">*</span>
+                                </label>
+                                <input 
+                                    type="tel" 
+                                    id="phoneNumber" 
+                                    class="form-input" 
+                                    placeholder="79001234567"
+                                    pattern="[0-9]{11,15}"
+                                    title="Enter phone number in format: 79001234567"
+                                >
+                                <div class="input-error" id="phoneNumber-error"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="messageText" class="form-label">
+                                    <span class="label-text">Message Text</span>
+                                    <span class="label-required">*</span>
+                                </label>
+                                <textarea 
+                                    id="messageText" 
+                                    class="form-textarea" 
+                                    placeholder="Hello World!"
+                                    rows="3"
+                                    maxlength="4096"
+                                ></textarea>
+                                <div class="input-error" id="messageText-error"></div>
+                                <div class="input-hint">Maximum 4096 characters</div>
+                            </div>
+
+                            <button 
+                                type="button" 
+                                id="sendMessage" 
+                                class="btn btn-success btn-full"
+                                data-method="sendMessage"
+                            >
+                                <span class="btn-icon">💬</span>
+                                sendMessage
+                            </button>
+
+                            <!-- Send File -->
+                            <div class="form-group">
+                                <label for="fileUrl" class="form-label">
+                                    <span class="label-text">File URL</span>
+                                    <span class="label-required">*</span>
+                                </label>
+                                <input 
+                                    type="url" 
+                                    id="fileUrl" 
+                                    class="form-input" 
+                                    placeholder="https://my-site.com/my/file.png"
+                                >
+                                <div class="input-error" id="fileUrl-error"></div>
+                            </div>
+
+                            <button 
+                                type="button" 
+                                id="sendFileByUrl" 
+                                class="btn btn-secondary btn-full"
+                                data-method="sendFileByUrl"
+                            >
+                                <span class="btn-icon">📎</span>
+                                sendFileByUrl
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Right Panel: Response -->
+                <section class="response-panel">
+                    <div class="card">
+                        <div class="response-header">
+                            <h2 class="section-title">Response</h2>
+                            <div class="response-controls">
+                                <button type="button" id="clearResponse" class="btn btn-ghost btn-sm">
+                                    <span class="btn-icon">🗑️</span>
+                                    Clear
+                                </button>
+                                <button type="button" id="copyResponse" class="btn btn-ghost btn-sm">
+                                    <span class="btn-icon">📋</span>
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="response-container">
+                            <div id="responseOutput" class="response-output">
+                                <div class="response-placeholder">
+                                    <div class="placeholder-icon">📡</div>
+                                    <p>API responses will appear here...</p>
+                                    <p class="placeholder-hint">Click on any method button to see the response</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p class="loading-text">Processing request...</p>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toastContainer" class="toast-container"></div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 GREEN API Test Interface. Built with ❤️ using modern web technologies.</p>
+                <div class="footer-links">
+                    <a href="https://green-api.com" target="_blank" rel="noopener noreferrer">Official Site</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html> 
