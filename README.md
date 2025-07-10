@@ -42,8 +42,8 @@
 
 ```bash
 # Клонируйте репозиторий
-git clone https://github.com/your-username/green-api-test.git
-cd green-api-test
+git clone https://github.com/TheMacroeconomicDao/green-api-test-task.git
+cd green-api-test-task
 
 # Запустите локальный сервер
 # Python 3
