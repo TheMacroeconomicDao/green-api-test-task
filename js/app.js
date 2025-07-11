@@ -373,7 +373,7 @@ class GreenAPIClient {
         this.elements.responseOutput.innerHTML = `
             <div class="response-placeholder">
                 <div class="placeholder-icon">📡</div>
-                <p>API responses will appear here...</p>
+                <p>No response yet</p>
                 <p class="placeholder-hint">Click on any method button to see the response</p>
             </div>
         `;
@@ -398,6 +398,11 @@ class GreenAPIClient {
 
     // ===== TOAST NOTIFICATIONS =====
     showToast(message, type = 'info') {
+        if (!this.elements.toastContainer) {
+            console.warn('Toast container not found');
+            return;
+        }
+        
         const toast = document.createElement('div');
         toast.className = `toast ${type}`;
         
@@ -408,14 +413,25 @@ class GreenAPIClient {
             <span class="toast-message">${message}</span>
         `;
         
+        // Add to container
         this.elements.toastContainer.appendChild(toast);
+        
+        // Force reflow to ensure animation plays
+        toast.offsetHeight;
         
         // Auto remove after 5 seconds
         setTimeout(() => {
             if (toast.parentNode) {
-                toast.parentNode.removeChild(toast);
+                toast.style.animation = 'slideOutRight 0.3s ease forwards';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
             }
         }, 5000);
+        
+        return toast;
     }
 
     getToastIcon(type) {
@@ -423,6 +439,7 @@ class GreenAPIClient {
             case 'success': return '✅';
             case 'error': return '❌';
             case 'info': return 'ℹ️';
+            case 'warning': return '⚠️';
             default: return 'ℹ️';
         }
     }

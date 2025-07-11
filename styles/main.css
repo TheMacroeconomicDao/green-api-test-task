@@ -514,6 +514,10 @@ body {
   border-left: 4px solid var(--info-color);
 }
 
+.toast.warning {
+  border-left: 4px solid var(--warning-color);
+}
+
 .toast-icon {
   font-size: var(--text-lg);
 }
@@ -531,6 +535,17 @@ body {
   to {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
   }
 }
 
@@ -577,6 +592,17 @@ body {
   
   .main-content {
     padding: var(--space-6) var(--space-4);
+  }
+}
+
+@media (min-width: 1400px) {
+  .main-content {
+    max-width: 1200px;
+  }
+  
+  .app-container {
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }
 
